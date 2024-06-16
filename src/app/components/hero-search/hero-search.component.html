@@ -1,0 +1,14 @@
+<div id="search-component">
+    <label for="search-box">Hero Search </label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+    <!-- when you want to map an observable value, use asyncPipe so that it automatically subscribes to that value -->
+    <!-- here heroes$ states that it is an Observable not an array -->
+    <ul class="search-result">
+        <li *ngFor="let hero of heroes$ | async">
+            <a routerLink="/detail/{{hero.id}}">
+                {{hero.name}}
+            </a>
+        </li>
+    </ul>
+</div>
